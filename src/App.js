@@ -1,20 +1,23 @@
 import './App.css';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const App = () => {
   const [topping, setTopping] = useState("cheese");
   const [coloring, setColoring] = useState("");
 
   const updateTopping = (topping) => {
-    console.log(`topping: ${topping}`);
     setTopping(topping);
   }
   const updateColoring = (coloring) => {
-    console.log(`coloring: ${coloring}`);
     setColoring(coloring);
   }
-
+  
+  useEffect(() => {
+    console.log(`coloring: ${coloring}`);
+    console.log(`topping: ${topping}`);
+  })
+ 
   const pizzaSliceStyle = coloring === "" ? null : { color: 'transparent', 'textShadow': `0 0 0 ${coloring}`};
 
   return (
