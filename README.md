@@ -1,3 +1,24 @@
+# Guided Exploration Pizza App
+
+This repo is for the guided exploration portion of the CC Immersive React lectures.
+
+Please see the lecture recipes for a detailed plan on how to integrate this in a lecture:
+- [React - Hello Components! Recipe](https://www.notion.so/codechrysalis/ReactJS-Hello-Components-0b21bc9930ad404daa7e588a6c7eb151)
+- [React - Nesting and Architecture Recipe](https://www.notion.so/codechrysalis/ReactJS-Nesting-Architecture-3b3722766f99408bae5798d6a78e1008)
+
+See branches that start with `step/#/....` for progression:
+- `git checkout step/0/vanilla-pizza` - reference implementation in vanilla JS
+- `git checkout step/0/create-react-app` - vanilla create-react-app scaffolding
+- `git checkout step/1/hello-react-pizza` - static react component, but playing with event handlers
+- `git checkout step/2/add-hooks` - dynamic pizza 🍕🍕🍕 with `useState`  and `useEffect`
+- `git checkout step/3/componentize` - nested with props, etc.
+
+
+
+*The below is vanilla scaffolding from the Create React App CLI:*
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
