@@ -1,49 +1,20 @@
 import './App.css';
 
-import { useState, useEffect } from 'react';
-
 const App = () => {
-  const [topping, setTopping] = useState("cheese");
-  const [coloring, setColoring] = useState("");
-
-  const updateTopping = (topping) => {
-    setTopping(topping);
-  }
-  const updateColoring = (coloring) => {
-    setColoring(coloring);
-  }
-  
-  useEffect(() => {
-    console.log(`coloring: ${coloring}`);
-    console.log(`topping: ${topping}`);
-  })
- 
-  const pizzaSliceStyle = coloring === "" ? null : { color: 'transparent', 'textShadow': `0 0 0 ${coloring}`};
-
   return (
     <div className="App">
       <header className="App-header">
         <div className="pizza">
-            <div className="pizza__slice" style={pizzaSliceStyle}>
+            <div className="pizza__slice">
               🍕
             </div>
             <h1 className="pizza__topping">
-              {topping}
+              cheese
             </h1>
         </div>
         <form className="pizza__label">
           <label>Choose your topping:</label>
           <input
-              onChange={e => {
-                  updateTopping(e.target.value);
-              }}
-              type="text"
-          ></input>
-          <label>Food coloring?:</label>
-          <input
-              onChange={e => {
-                  updateColoring(e.target.value);
-              }}
               type="text"
           ></input>
         </form>
@@ -52,4 +23,16 @@ const App = () => {
   );
 }
 
+
 export default App;
+
+
+// const topping = "cheese"
+// const pizzaSliceStyle = null;
+// const coloring = ""
+// const pizzaSliceStyle = { color: 'transparent', 'textShadow': `0 0 0 ${coloring}`};
+
+/* <label>Food coloring?:</label>
+          <input
+              type="text"
+          ></input> */
