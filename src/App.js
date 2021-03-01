@@ -4,33 +4,29 @@ import { useState, useEffect } from 'react';
 
 const App = () => {
   const [topping, setTopping] = useState("cheese");
-  const [coloring, setColoring] = useState("");
+  const [coloring, setColoring] = useState("blue");
 
   const updateTopping = (topping) => {
     setTopping(topping);
   }
-  const updateColoring = (coloring) => {
-    setColoring(coloring);
-  }
   
+  const updateColoring = newColoring => {
+    console.log(newColoring);
+
+    // coloring = newColring のようなことが起きている！
+    setColoring(newColoring)
+  }
+
+  const pizzaSliceStyle = { color: 'transparent', 'textShadow': `0 0 0 ${coloring}`};
+
   useEffect(() => {
-    console.log(`coloring: ${coloring}`);
     console.log(`topping: ${topping}`);
   })
  
-  const pizzaSliceStyle = coloring === "" ? null : { color: 'transparent', 'textShadow': `0 0 0 ${coloring}`};
-
   return (
     <div className="App">
       <header className="App-header">
-        <div className="pizza">
-            <div className="pizza__slice" style={pizzaSliceStyle}>
-              🍕
-            </div>
-            <h1 className="pizza__topping">
-              {topping}
-            </h1>
-        </div>
+        <Pizza topping = {topping} coloring= {coloring}/>
         <form className="pizza__label">
           <label>Choose your topping:</label>
           <input
@@ -39,7 +35,7 @@ const App = () => {
               }}
               type="text"
           ></input>
-          <label>Food coloring?:</label>
+          <label>Choose your food coloring:</label>
           <input
               onChange={e => {
                   updateColoring(e.target.value);
@@ -50,6 +46,20 @@ const App = () => {
       </header>
     </div>
   );
+}
+
+const Pizza = (props) => {
+  const pizza__style = { color: 'transparent', 'textShadow': `0 0 0 ${props.coloring}`}
+  return (
+  <div className="pizza">
+    <div className="pizza__slice" style={pizza__style}>
+      🍕
+    </div>
+    <h1 className="pizza__topping">
+      {props.topping}
+      {props.coloring}
+    </h1>
+  </div>);
 }
 
 export default App;
