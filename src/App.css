@@ -37,6 +37,8 @@
 
 .pizza__label {
   margin: 2em;
+  display: flex;
+  flex-direction: column;
 }
 
 .pizza__slice {
