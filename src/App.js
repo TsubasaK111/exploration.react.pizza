@@ -1,52 +1,65 @@
 import './App.css';
-import Pizza from './components/Pizza';
-// import PizzaLabel from './components/PizzaLabel';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const App = () => {
   const [topping, setTopping] = useState("cheese");
-  const [coloring, setColoring] = useState("");
+  const [coloring, setColoring] = useState("blue");
 
   const updateTopping = (topping) => {
-    console.log(`topping: ${topping}`);
     setTopping(topping);
   }
-  const updateColoring = (coloring) => {
-    console.log(`coloring: ${coloring}`);
-    setColoring(coloring);
+  
+  const updateColoring = newColoring => {
+    console.log(newColoring);
+
+    // coloring = newColring のようなことが起きている！
+    setColoring(newColoring)
   }
 
+  const pizzaSliceStyle = { color: 'transparent', 'textShadow': `0 0 0 ${coloring}`};
+
+  useEffect(() => {
+    console.log(`topping: ${topping}`);
+  })
+ 
   return (
     <div className="App">
       <header className="App-header">
-        <Pizza topping={topping} coloring={coloring}/>
-        <PizzaLabel updateColoring={updateColoring} updateTopping={updateTopping}/>
+        <Pizza topping = {topping} coloring= {coloring}/>
+        <form className="pizza__label">
+          <label>Choose your topping:</label>
+          <input
+              onChange={e => {
+                  updateTopping(e.target.value);
+              }}
+              type="text"
+          ></input>
+          <label>Choose your food coloring:</label>
+          <input
+              onChange={e => {
+                  updateColoring(e.target.value);
+              }}
+              type="text"
+          ></input>
+        </form>
       </header>
     </div>
   );
 }
 
-const PizzaLabel = (props) => {
+const Pizza = (props) => {
+  const pizza__style = { color: 'transparent', 'textShadow': `0 0 0 ${props.coloring}`}
   return (
-      <form className="pizza__label">
-          <label>Choose your topping:</label>
-          <input
-              onChange={e => {
-                  props.updateTopping(e.target.value);
-              }}
-              type="text"
-          ></input>
-          <label>Food coloring?:</label>
-          <input
-              onChange={e => {
-                  props.updateColoring(e.target.value);
-              }}
-              type="text"
-          ></input>
-      </form>
-  );
+  <div className="pizza">
+    <div className="pizza__slice" style={pizza__style}>
+      🍕
+    </div>
+    <h1 className="pizza__topping">
+      {props.topping}
+      {props.coloring}
+    </h1>
+  </div>);
 }
-
 
 export default App;
