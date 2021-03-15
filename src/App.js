@@ -37,7 +37,7 @@ const PizzaLabel = (props) => {
               }}
               type="text"
           ></input>
-          <label>Food coloring?:</label>
+          <label>Food coloring!:</label>
           <input
               onChange={e => {
                   props.updateColoring(e.target.value);
