@@ -20,8 +20,8 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <Pizza topping={topping} coloring={coloring}/>
-        <PizzaLabel updateColoring={updateColoring} updateTopping={updateTopping}/>
+        <Pizza topping={topping} coloring={coloring} />
+        <PizzaLabel updateColoring={updateColoring} updateTopping={updateTopping} />
       </header>
     </div>
   );
@@ -29,22 +29,26 @@ const App = () => {
 
 const PizzaLabel = (props) => {
   return (
-      <form className="pizza__label">
-          <label>Choose your topping:</label>
-          <input
-              onChange={e => {
-                  props.updateTopping(e.target.value);
-              }}
-              type="text"
-          ></input>
-          <label>Food coloring!:</label>
-          <input
-              onChange={e => {
-                  props.updateColoring(e.target.value);
-              }}
-              type="text"
-          ></input>
-      </form>
+    <form className="pizza__label">
+      <div className="pizza__row">
+        <label>Choose your topping:</label>
+        <input
+          onChange={e => {
+            props.updateTopping(e.target.value);
+          }}
+          type="text"
+        ></input>
+      </div>
+      <div className="pizza__row">
+        <label>Food coloring!:</label>
+        <input
+          onChange={e => {
+            props.updateColoring(e.target.value);
+          }}
+          type="text"
+        ></input>
+      </div>
+    </form>
   );
 }
 
